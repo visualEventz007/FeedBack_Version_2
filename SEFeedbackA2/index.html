@@ -1,0 +1,342 @@
+<!--
+Mobile web development
+Template for General purpose html5 page with JQuery Mobile
+Created by: Sydney D Enebeli
+email: senebeli5891@conestogac.on.ca
+date: Feb. 13, 2016
+date modified for Assign2: 28/Feb/2016
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Our Scrabble Club</title>
+    <!--jQuery mobile style-->
+    <link rel="stylesheet" type="text/css" href="css/lib/jquery.mobile-1.4.5.css">
+    <!--our style-->
+    <link rel="stylesheet" type="text/css" href="css/SEmystylesheet.css">
+    <!--jQuery-->
+    <script src="js/lib/jquery-2.1.4.js"></script>
+    <!--jQuery Mobile-->
+    <script src="js/lib/jquery.mobile-1.4.5.js"></script>
+    <!--jQuery validator-->
+    <script src="js/lib/jquery.validate.js"></script>
+    <!--our scripts-->
+    <script src="js/SEglobal.js"></script>
+    <script src="js/SEdatabase.js"></script>
+    <script src="js/SEfeedbackDAL.js"></script>
+    <script src="js/SEutil.js"></script>
+    <script src="js/SEfacade.js"></script>
+
+</head>
+<body>
+<!--page1: homePage-->
+<div id="SEHomePage" data-role="page">
+    <header data-role="header" data-theme="b" data-position="fixed">
+        <h1> SE FeedBack A2 </h1>
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#SEHomePage" data-icon="home" data-theme="a" class="ui-btn-active ui-state-persist"
+                       data-transition="" data-rel="">Home</a></li>
+                <li><a href="#SEAddFeedbackPage" data-icon="plus" data-theme="a" class=""
+                       data-transition="" data-rel="">Add</a></li>
+                <li><a href="#SEViewFeedbackPage" data-icon="grid" data-theme="a" class=""
+                       data-transition="" data-rel="">Reviews</a></li>
+                <li><a href="#SESettingPage" data-icon="gear" data-theme="a" class=""
+                       data-transition="" data-rel="">Settings</a></li>
+                <li><a href="#SEContactPage" data-icon="phone" data-theme="a" class=""
+                       data-transition="" data-rel="">Contact</a></li>
+
+
+            </ul>
+        </div>
+
+    </header>
+    <section data-role="content">
+        <h2 align="center">Sydney Dele Enebeli's <br>Feedback A3 App</h2>
+
+        <p>Welcome to the Sydney Dele Enebeli's feedback A1 app. A prototype designed for mobile programming class.
+            This is the first literature of its kind. Please feel free to check it and leave us a review on the that
+            page
+        </p>
+
+        <p align="center">
+            <img src="images/SE-icon.png" width="20%" height="" alt="Trifle">
+        </p>
+
+        <p align="center">Please also feel free to contact us for any suggestions.<br> <strong>Thank you for visiting!
+        </strong></p>
+
+        <a href="tel:519-781-6674" data-role="button" data-icon="phone">Call: 1800-781-6674</a>
+        <a href="mailto:senebeli5891@conestogac.on.ca" data-role="button" data-icon="mail">senebeli5891@conestogac.on.ca
+        </a>
+        <p><strong>Website:</strong></p>
+        <a href="http://www.conestogac.on.ca/" data-role="button" data-icon="action">Conestoga College</a>
+
+
+    </section>
+    <footer data-role="footer" data-theme="b" data-position="fixed">
+        <h1> &copy; 2016. Sydney Dele Enebeli </h1>
+    </footer>
+</div>
+
+<!--page2: add page-->
+<div id="SEAddFeedbackPage" data-role="page">
+    <header data-role="header" data-theme="b" data-position="fixed">
+        <h1> Add a Feedback </h1>
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#SEHomePage" data-icon="home" data-theme="a" class=""
+                       data-transition="turn" data-rel="">Home</a></li>
+                <li><a href="#SEAddFeedbackPage" data-icon="plus" data-theme="a" class="ui-btn-active ui-state-persist"
+                       data-transition="turn" data-rel="">Add </a></li>
+                <li><a href="#SEViewFeedbackPage" data-icon="grid" data-theme="a" class=""
+                       data-transition="" data-rel="">Reviews</a></li>
+                <li><a href="#SESettingPage" data-icon="gear" data-theme="a" class=""
+                       data-transition="" data-rel="">Settings</a></li>
+
+
+            </ul>
+        </div>
+
+    </header>
+    <section data-role="content">
+
+        <form id="SEAddForm" name="SEAddForm" data-ajax="false">
+            <label for="txtName1"><strong>Business Name</strong></label>
+            <input type="text" id="txtName1" name="txtName1" value="" class="required" data-theme="a"
+                   placeholder="Please Business Enter name here" data-clear-btn="true">
+
+            <label for="optType"><strong>Type:</strong></label>
+            <select id="optType" name="optType">
+
+                <option value="other">Others</option>
+                <option value="canadian">Canadian</option>
+                <option value="asian">Asian</option>
+
+            </select>
+            <br>
+
+
+            <label for="txtRevEmail1"><strong>Reviewer Email</strong></label>
+            <input type="text" id="txtRevEmail1" name="txtRevEmail1" value="" class="required" data-theme="a"
+                   placeholder="Email" data-clear-btn="true">
+
+            <p><strong>Reviewer's Comments:</strong></p>
+            <textarea rows="4" cols="50" name="comments" id="comments" placeholder="Please Add Comments here"></textarea>
+
+
+            <p><strong>Reviewer Date:</strong></p>
+            <input type="date" id="txtRevDate1" name="txtRevDate1" data-icon="" data-iconpos="left"
+                   value=""
+                   class="required" data-theme="a" data-clear-btn="true">
+
+
+
+
+                <label for="chkRating"><input id="chkRating" type="checkbox">Do you want to add your Ratings?</label>
+
+                <div id="ratingHidden">
+
+                    <label for="valueGameAdd"><strong>Game Quality(0-5):</strong></label>
+                    <input type="number" id="valueGameAdd" name="valueGameAdd"
+                           class="required" data-theme="a"  value="0">
+
+                    <label for="valueServiceAdd"><strong>Service(0-5):</strong></label>
+                    <input type="number" id="valueServiceAdd" name="valueServiceAdd"
+                           class="required" data-theme="a"  value="0">
+
+                    <label for="valueValueAdd"><strong>Value(0-5):</strong></label>
+                    <input type="number" id="valueValueAdd" name="valueValueAdd"
+                           class="required" data-theme="a" value="0">
+
+                    <label for="overAdd"><strong>Overall Ratings(calculated):</strong></label>
+                    <input type="number" id="overAdd" name="txtOverAdd" value="" class="required" data-theme="a"
+                           disabled="disabled">
+
+                  </div>
+
+
+            <fieldset data-role="controlgroup" data-type="horizontal" data-theme="b" data-iconpos="right">
+                <input type="radio" id="radSave" name="radKeep">
+                <label for="radSave">Save</label>
+
+            </fieldset>
+
+        </form>
+
+
+    </section>
+    <footer data-role="footer" data-theme="b" data-position="fixed">
+        <h1> &copy; 2016. Sydney Dele Enebeli </h1>
+    </footer>
+</div>
+
+<!--page3: List of Review Page-->
+<div id="SEViewFeedbackPage" data-role="page">
+    <header data-role="header" data-theme="b" data-position="fixed">
+        <h1> List of Reviews </h1>
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#SEHomePage" data-icon="home" data-theme="a" class=""
+                       data-transition="" data-rel="">Home</a></li>
+                <li><a href="#SEAddFeedbackPage" data-icon="plus" data-theme="a" class=""
+                       data-transition="" data-rel="">Add</a></li>
+                <li><a href="#SEViewFeedbackPage" data-icon="grid" data-theme="a"
+                       class="ui-btn-active ui-state-persist"
+                       data-transition="" data-rel="">Reviews</a></li>
+                <li><a href="#SESettingPage" data-icon="gear" data-theme="a" class=""
+                       data-transition="" data-rel="">Settings</a></li>
+
+            </ul>
+        </div>
+
+    </header>
+    <section data-role="content">
+        <ul data-role="listview" id="SEFeedbackList" data-icon="false" class="ui- listview-inset">
+        </ul>
+    </section>
+
+
+    <footer data-role="footer" data-theme="b" data-position="fixed">
+        <h1> &copy; 2016. Sydney Dele Enebeli </h1>
+    </footer>
+</div>
+
+<!--modify feedback page-->
+<div id="SEEditFeedbackPage" data-role="page">
+    <header data-role="header" data-theme="b" data-position="fixed">
+        <h1> Modify Feedback </h1>
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#SEHomePage" data-icon="home" data-theme="a" class=""
+                       data-transition="" data-rel="">Home</a></li>
+                <li><a href="#SEAddFeedbackPage" data-icon="plus" data-theme="a" class=""
+                       data-transition="" data-rel="">Add </a></li>
+                <li><a href="#SEViewFeedbackPage" data-icon="grid" data-theme="a" class="ui-btn-active ui-state-persist"
+                       data-transition="" data-rel="">Reviews</a></li>
+                <li><a href="#SESettingPage" data-icon="gear" data-theme="a" class=""
+                       data-transition="" data-rel="">Settings</a></li>
+
+
+            </ul>
+        </div>
+
+    </header>
+    <section data-role="content">
+
+        <form id="SEAddForm2" name="SEAddForm2" data-ajax="false">
+            <label for="bizName1"><strong>Business Name:</strong></label>
+            <input type="text" id="bizName1" name="bizName1" value="" class="required" data-theme="a"
+                   data-clear-btn="true">
+
+            <label for="optType2"><strong>Type:</strong></label>
+            <select id="optType2" name="optType2">
+
+                <!--<option value="other">Others</option>-->
+                <!--<option value="canadian">Canadian</option>-->
+                <!--<option value="asian">Asian</option>-->
+
+            </select>
+            <br>
+
+            <label for="txtEmailList"><strong>Reviewer's Email</strong></label>
+            <input type="text" id="txtEmailList" name="txtEmailList" value="" class="required" data-theme="a"
+                   data-clear-btn="true">
+
+            <p><strong>Reviewer"s Comment:</strong></p>
+            <textarea rows="4" cols="50" name="comment" id="comment1"></textarea>
+
+            <p><strong>Reviewer Date:</strong></p>
+            <input type="date" id="txtRevDate2" name="txtRevDate2" data-icon="" data-iconpos="left"
+                   value=""
+                   class="required" data-theme="a" data-clear-btn="true">
+
+
+            <label for="chkRating2"><input id="chkRating2" type="checkbox">Do you want to add your Ratings?</label>
+
+            <div id="hideModifyPage">
+                <label for="valueGame"><strong>Game Quality(0-5):</strong></label>
+                <input type="number" id="valueGame" name="valueGame"
+                       class="required" data-theme="a"  value="0">
+
+                <label for="valueService"><strong>Service(0-5):</strong></label>
+                <input type="number" id="valueService" name="valueService"
+                       class="required" data-theme="a" value="0">
+
+                <label for="valueValue"><strong>Value(0-5):</strong></label>
+                <input type="number" id="valueValue" name="valueValue"
+                       class="required" data-theme="a" value="0">
+
+                <label for="calculator"><strong>Overall Ratings(calculated):</strong></label>
+                <input type="number" id="calculator" name="overRate" value="" class="required" data-theme="a"
+                       disabled="disabled">
+
+            </div>
+
+
+            <fieldset data-role="controlgroup" data-type="horizontal">
+                <a href="#" data-role="button" data-theme="" style="background-color: yellow">Cancel</a>
+                <a href="#" data-role="button" data-theme="b">Delete</a>
+                <a href="#" data-role="button" id="btnUpdate" name="btnUpdate"
+                   data-icon="" style="background-color: #3388cc; color: white">Update</a>
+
+            </fieldset>
+
+
+        </form>
+
+
+    </section>
+    <footer data-role="footer" data-theme="b" data-position="fixed">
+        <h1> &copy; 2016. Sydney Dele Enebeli </h1>
+    </footer>
+</div>
+
+<!--page4: settings page-->
+<div id="SESettingPage" data-role="page">
+    <header data-role="header" data-theme="b" data-position="fixed">
+        <h1> Settings </h1>
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#SEHomePage" data-icon="home" data-theme="a" class=""
+                       data-transition="" data-rel="">Home</a></li>
+                <li><a href="#SEAddFeedbackPage" data-icon="plus" data-theme="a" class=""
+                       data-transition="" data-rel="">Add</a></li>
+                <li><a href="#SEViewFeedbackPage" data-icon="grid" data-theme="a" class=""
+                       data-transition="" data-rel="">Reviews</a></li>
+                <li><a href="#SESettingPage" data-icon="gear" data-theme="a"
+                       class="ui-btn-active ui-state-persist"
+                       data-transition="" data-rel="">Settings</a></li>
+
+
+            </ul>
+        </div>
+
+    </header>
+    <section data-role="content">
+
+        <form id="SEAddEmail" name="SEAddForm" data-ajax="false">
+            <label for="txtEmail"><strong>Default reviewer Email:</strong></label>
+            <input type="text" id="txtEmail" name="txtEmail" value="" class="" data-theme="a"
+                   placeholder="Please enter email" data-clear-btn=""><br>
+
+            <a href="#SESettingPage" data-role="button" id="btnSaveDef" name="btnSaveDef"
+               class="ui-state-persist">Save Default</a>
+            <button type="button" data-role="button" id="btnClearDef" name="btnClearDef"
+                    data-theme="b">Clear Default
+            </button>
+
+
+            <a href="#SEHomePage" data-role="button" data-transition="slide">Go to home</a>
+        </form>
+    </section>
+    <footer data-role="footer" data-theme="b" data-position="fixed">
+        <h1> &copy; 2016. Sydney Dele Enebeli </h1>
+    </footer>
+</div>
+
+
+</body>
+</html>
